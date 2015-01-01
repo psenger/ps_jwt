@@ -1,0 +1,68 @@
+Script started on Tue Dec 30 17:44:04 2014
+[?1034hbash-3.2$ yo angular:controller register
+[32m   create[39m app/scripts/controllers/register.js
+[32m   create[39m test/spec/controllers/register.js
+bash-3.2$ cat app/scripts/controllers/register.js
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name psJwtApp.controller:RegisterCtrl
+ * @description
+ * # RegisterCtrl
+ * Controller of the psJwtApp
+ */
+angular.module('psJwtApp')
+  .controller('RegisterCtrl', function ($scope) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
+    ];
+  });
+bash-3.2$ bower install animate.css -save[K[K[K-s[K[K[K-save
+bower [36mcached       [39m git://github.com/daneden/animate.css.git#3.2.0
+bower [36mvalidate     [39m 3.2.0 against git://github.com/daneden/animate.css.git#*
+bower [36minstall      [39m animate.css#3.2.0
+
+animate.css#3.2.0 bower_components/animate.css
+bash-3.2$ yo angular:service alert
+[32m   create[39m app/scripts/services/alert.js
+[32m   create[39m test/spec/services/alert.js
+bash-3.2$ cat app/scripts/services/alert.js 
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name psJwtApp.alert
+ * @description
+ * # alert
+ * Service in the psJwtApp.
+ */
+angular.module('psJwtApp')
+  .service('alert', function () {
+    // AngularJS will instantiate a singleton by calling "new" on this function
+  });
+bash-3.2$ cat test/spec/services/alert.js
+'use strict';
+
+describe('Service: alert', function () {
+
+  // load the service's module
+  beforeEach(module('psJwtApp'));
+
+  // instantiate service
+  var alert;
+  beforeEach(inject(function (_alert_) {
+    alert = _alert_;
+  }));
+
+  it('should do something', function () {
+    expect(!!alert).toBe(true);
+  });
+
+});
+bash-3.2$ exit
+exit
+
+Script done on Tue Dec 30 18:33:39 2014
