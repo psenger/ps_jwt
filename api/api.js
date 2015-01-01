@@ -16,10 +16,18 @@ app.post('/register',function(req,res){
     var newUser = new User.model({
         email:user.email,
         password:user.password
-    });
-    newUser.save(function(err){
+    }); 
+    newUser.save(function(err,savedUser){
         //res.status(200).json(newUser);
-        res.status(200).send(newUser.toJSON());
+        var payload = {
+            iss: req.hostname,
+            sub: savedUser._id
+        };
+        var token = jwt.encode(payload,"shh..");
+        res.status(200).send({
+            user: savedUser.toJSON(),
+            token: token
+        });
     }); 
 });
 mongoose.connect("mongodb://192.168.33.10:27017/psjwt");
