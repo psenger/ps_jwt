@@ -1,5 +1,4 @@
-'use strict';
- console.log('loaded');
+'use strict'; 
 angular.module('psJwtApp').service('alert', function ($rootScope, $timeout) { 
     var alertTimeout; 
     return function(type,title,message,timeout){ 
