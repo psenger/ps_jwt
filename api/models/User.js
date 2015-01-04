@@ -5,12 +5,14 @@ var UserSchema = new mongoose.Schema({
     password: String
 });
 // method extensions needs to occur before the model.
+// Add a new Method to the user object.
 UserSchema.methods.toJSON = function(){
     var user = this.toObject();
     delete user.password;
     return user;
 };
 exports.model = mongoose.model('User',UserSchema);
+// add an event on save. to generate the salt.
 UserSchema.pre('save',function(next){
     var user = this;
     if(!user.isModified('password')) return next();
