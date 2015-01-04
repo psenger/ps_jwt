@@ -6,6 +6,11 @@ angular.module('psJwtApp').config(function($urlRouterProvider, $stateProvider) {
       url: '/',
       templateUrl: '/views/main.html'
     })
+    .state('jobs', {
+      url: '/jobs',
+      templateUrl: '/views/jobs.html',
+      controller: 'JobsCtrl'
+    })
     .state('register', {
       url: '/register',
       templateUrl: '/views/register.html',
