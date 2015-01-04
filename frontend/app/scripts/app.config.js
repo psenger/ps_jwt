@@ -1,5 +1,5 @@
 'use strict';
-angular.module('psJwtApp').config(function($urlRouterProvider, $stateProvider) {
+angular.module('psJwtApp').config(function($urlRouterProvider, $stateProvider, $httpProvider ) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
     .state('main', {
@@ -20,4 +20,5 @@ angular.module('psJwtApp').config(function($urlRouterProvider, $stateProvider) {
       url: '/logout', 
       controller: 'LogoutCtrl'
     });
-});
+    $httpProvider.interceptors.push('authinterceptor');
+}).constant('API_URL','http://localhost:3000/');
