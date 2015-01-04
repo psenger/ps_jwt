@@ -21,7 +21,7 @@ app.post('/register', function(req, res) {
         //res.status(200).json(newUser);
         var payload = {
             iss: req.hostname,
-            sub: savedUser._id
+            sub: savedUser.id // ._id is the MongoDB Object, while .id is the string literal
         };
         var token = jwt.encode(payload, "shh..");
         res.status(200).send({
@@ -40,6 +40,13 @@ app.get('/jobs', function(req, res) {
     if (!req.headers.authorization) {
         return res.status(401).send({
             message: 'you are not authorized'
+        });
+    }
+    var token = req.headers.authorization.split(' ')[1];
+    var payload = jwt.decode(token, "shh..");
+    if (!payload.sub) {
+        res.status(401).send({
+            message: 'Authentication failed'
         });
     }
     res.json(jobs);
